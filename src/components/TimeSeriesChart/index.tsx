@@ -40,7 +40,6 @@ const TimeSeriesChart = ({ series, title, height, width }: any) => {
           if(val) {
             const dateString = format(val, "HH:mm");
             return dateString;
-
           }
         }
       }
