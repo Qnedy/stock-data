@@ -6,7 +6,7 @@ import { api } from "../../services/api";
 const alphaVantageAPIKey = import.meta.env.VITE_ALPHA_VANTAGE_API_KEY;
 
 const fetchTimeSeriesIntraDay = async () => {
-  const { data } = await api.get(`/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo`);
+  const { data } = await api.get(`/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${alphaVantageAPIKey}`);
 
   const rawEntriesData = data?.["Time Series (5min)"];
   const rawEntriesMetaData = data?.["Meta Data"];
@@ -31,8 +31,7 @@ const fetchTimeSeriesIntraDay = async () => {
   const formattedData = {
     title: rawEntriesMetaData["1. Information"],
     seriesData: entriesData.reverse(),
-    lastUpdate: format(rawEntriesMetaData["3. Last Refreshed"], "MMMM dd, yyyy - HH:mm:ss"
-    )
+    lastUpdate: format(rawEntriesMetaData["3. Last Refreshed"], "MMMM dd, yyyy - HH:mm:ss")
   }
 
   return formattedData;

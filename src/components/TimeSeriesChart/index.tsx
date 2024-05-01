@@ -1,11 +1,13 @@
 import ReactApexChart from "react-apexcharts";
 import { format } from 'date-fns';
 
-const TimeSeriesChart = ({ series, title, height, width, lastUpdate }: any) => {
+import { TimeSeriesChartProps } from "./types";
+
+const TimeSeriesChart = ({ series, title, height, width, lastUpdate }: TimeSeriesChartProps) => {
 
   const options = {
     chart: {
-      height: 350,
+      height: height,
     },
     title: {
       text: title,

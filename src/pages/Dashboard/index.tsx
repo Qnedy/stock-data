@@ -3,10 +3,14 @@ import { useDashboard } from "./hooks";
 
 const Dashboard = () => {
   const { timeSeriesIntraDay } = useDashboard();
+  const defaultSerieData = [{
+    x: new Date(),
+    y: [0, 0, 0, 0]
+  }]
 
   const series = [{
     name: 'candle',
-    data: timeSeriesIntraDay?.seriesData
+    data: timeSeriesIntraDay ? timeSeriesIntraDay.seriesData : defaultSerieData
   }];
 
   return (<div className="flex items-center justify-center">
