@@ -13,8 +13,9 @@ const Dashboard = () => {
     {timeSeriesIntraDay ? <TimeSeriesChart 
       series={series}
       height={500}
-      width={800}
+      width={850}
       title={timeSeriesIntraDay.title}
+      lastUpdate={timeSeriesIntraDay.lastUpdate}
     /> : null}
   </div>)
 }

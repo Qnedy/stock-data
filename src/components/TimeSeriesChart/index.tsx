@@ -1,7 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import { format } from 'date-fns';
 
-const TimeSeriesChart = ({ series, title, height, width }: any) => {
+const TimeSeriesChart = ({ series, title, height, width, lastUpdate }: any) => {
 
   const options = {
     chart: {
@@ -11,7 +11,6 @@ const TimeSeriesChart = ({ series, title, height, width }: any) => {
       text: title,
       align: "left" as const,
     },
-    
     tooltip: {
       enabled: true,
     },
@@ -38,6 +37,8 @@ const TimeSeriesChart = ({ series, title, height, width }: any) => {
       height={height} 
       width={width}
     />
+
+    <p className="text-[12px]">Last update: {lastUpdate}</p>
   </div>)
 }
 

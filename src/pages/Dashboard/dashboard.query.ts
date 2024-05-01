@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
 
 import { api } from "../../services/api";
 
@@ -8,7 +9,8 @@ const fetchTimeSeriesIntraDay = async () => {
   const { data } = await api.get(`/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo`);
 
   const rawEntriesData = data?.["Time Series (5min)"];
-
+  const rawEntriesMetaData = data?.["Meta Data"];
+  
   const entriesData = [];
   for (const dateTime in rawEntriesData) {
     const { 
@@ -27,8 +29,10 @@ const fetchTimeSeriesIntraDay = async () => {
   }
 
   const formattedData = {
-    title: data?.["Meta Data"]["1. Information"],
-    seriesData: entriesData
+    title: rawEntriesMetaData["1. Information"],
+    seriesData: entriesData.reverse(),
+    lastUpdate: format(rawEntriesMetaData["3. Last Refreshed"], "MMMM dd, yyyy - HH:mm:ss"
+    )
   }
 
   return formattedData;
