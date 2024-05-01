@@ -5,7 +5,7 @@ import { queryClient, QueryClientProvider } from './services/queryClient.ts';
 
 import Router from './routes/index.tsx';
 
-import './index.css';
+import './globals.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
