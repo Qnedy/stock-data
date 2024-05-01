@@ -1,5 +1,5 @@
 import ReactApexChart from "react-apexcharts";
-import { format, parse, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 
 const TimeSeriesChart = ({ series, title, height, width }: any) => {
 
@@ -11,25 +11,7 @@ const TimeSeriesChart = ({ series, title, height, width }: any) => {
       text: title,
       align: "left" as const,
     },
-    annotations: {
-      xaxis: [
-        {
-          x: 'Oct 06 14:00',
-          borderColor: '#00E396',
-          label: {
-            borderColor: '#00E396',
-            style: {
-              fontSize: '12px',
-              color: '#fff',
-              background: '#00E396'
-            },
-            orientation: 'horizontal',
-            offsetY: 7,
-            text: 'Annotation Test'
-          }
-        }
-      ]
-    },
+    
     tooltip: {
       enabled: true,
     },
@@ -41,14 +23,11 @@ const TimeSeriesChart = ({ series, title, height, width }: any) => {
             const dateString = format(val, "HH:mm");
             return dateString;
           }
+
+          return ""
         }
       }
     },
-    // yaxis: {
-    //   tooltip: {
-    //     enabled: true
-    //   }
-    // }
   }
 
   return (<div className="text-black">
