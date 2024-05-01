@@ -1,15 +1,16 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Router } from './routes/index.tsx';
+import { queryClient, QueryClientProvider } from './services/queryClient.ts';
+
+import Router from './routes/index.tsx';
 
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Router />
     </BrowserRouter>
-  </React.StrictMode>,
+  </QueryClientProvider>,
 )

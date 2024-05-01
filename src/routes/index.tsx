@@ -8,7 +8,7 @@ const Dashboard = React.lazy(() => import("../pages/Dashboard/routes").then((mod
   default: module.DashboardRoutes
 })));
 
-export const Router = () => {
+const Router = () => {
 
   return (
     <Suspense fallback={<div>Carregando...</div>} >
@@ -20,3 +20,5 @@ export const Router = () => {
     </Suspense>
   )
 }
+
+export default Router;
